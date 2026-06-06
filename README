@@ -1,0 +1,28 @@
+**`French Version`**
+
+***Winner-Takes-All*** est un jeu qui réunit plusieurs **investisseurs** dans une **arène**. Au début de la partie, un montant qui constitue le seuil à atteindre en investissant est définit dans la **partie en cours**. 
+Les investisseurs misent selon ce qu'ils possèdent dans un délai imparti. L'investisseur ayant la plus grande mise devient le **Top Investor** de la partie.
+Si l'ensemble des mises ou investissements est égale au montant définie dans la partie avant la fin du compte à rebours, le **Top Investor** peut automatiquement retirer les fonds ou laisser la partie continuer jusqu'à la fin du compte à rebours. Dans le cas contraire, une fois le compte à rebours terminé, l'entièreté des fonds revient directement au **Top Investor**.
+
+### Conditions générales:
+- Le jeu ne débute que lorsque le *nombre d'investisseurs est >= 2*
+- Le premier à investir dans la partie devient automatique **Top Investor**
+- Une fois engagé dans la partie, aucun investisseur ne peut réclamer ses mises
+- Si plusieurs investisseurs ont le même solde à la fin du temps imparti, la partie est prolongée de quelques minutes avec ces investisseurs uniquement dans l'arène.
+
+---
+
+**`English Version (Helped by AI for best translation)`**
+
+**Winner-Takes-All** is a game that brings multiple investors together in an arena. At the start of each round, a specific target amount is defined as the funding threshold to be reached.
+
+Investors can place their bets based on their balance within a set time limit. The investor with the largest total contribution becomes the **Top Investor** of the round.
+
+If the total pool of investments reaches the predefined threshold before the countdown ends, the Top Investor can either withdraw the funds immediately or let the round continue until the timer expires. Otherwise, if the countdown ends without reaching the target, the entirety of the funds is automatically awarded to the Top Investor.
+
+### General Terms and Conditions:
+
+- **Minimum Players:** The round only begins when there are 2 or more investors.
+- **First Mover Advantage:** The first person to invest in a round automatically becomes the Top Investor.
+- **No Refunds:** Once committed to the round, no investor can reclaim or withdraw their stakes.
+- **Overtime (Sudden Death):** If multiple investors have the exact same highest balance when the time expires, the round is extended by a few minutes, leaving only those tied investors in the arena to battle it out.

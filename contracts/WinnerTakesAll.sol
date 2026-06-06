@@ -1,23 +1,29 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.30;
 
+import {console} from "forge-std/console.sol";
+
+error NotOwner();
+
 contract WinnerTakesAll {
     struct Investor {
-        address investor;
+        uint32 index;
         uint256 amount;
     }
 
     uint256 timer;
 
-    mapping(address => Investor) listOfInvestors;
+    address[] public listOfInvestors;
 
     uint256 investment;
+
+    mapping(address => Investor) public investors;
 
     // Funding threshold to be reached
     uint256 immutable TARGET_AMOUNT = 0.5 ether;
 
     // Investor this largest investment
-    mapping(address => uint) topInvestor;
+    address public topInvestor;
 
     function invest() external payable onlyInvestor {
         // Check if amount is greater than 0
@@ -26,26 +32,48 @@ contract WinnerTakesAll {
         uint256 amountToInvest = msg.value;
 
         investment += amountToInvest;
-        listOfInvestors[msg.sender].amount += amountToInvest;
+        investors[msg.sender].amount += amountToInvest;
     }
 
     function join() public {
+        // Retrieve current investor index
+        uint32 investorIndex = investors[msg.sender].index;
+
+        if (listOfInvestors.length == 0) {
+            listOfInvestors.push(msg.sender);
+            return;
+        }
+
+        // Prevent to join if already investor
         require(
-            listOfInvestors[msg.sender].investor != msg.sender,
+            listOfInvestors[investorIndex] != msg.sender,
             "You're already joined the round!"
         );
-
-        listOfInvestors[msg.sender].investor = msg.sender;
     }
 
-    function getInvestment() public view returns (uint256) {
+    function getTotalInvestment() public view onlyInvestor returns (uint256) {
         return (investment / 1 ether);
     }
 
-    modifier onlyInvestor() {
-        Investor memory investor = listOfInvestors[msg.sender];
+    function myInvestment() public view onlyInvestor returns (uint256) {
+        return (investors[msg.sender].amount / 1 ether);
+    }
 
-        require(investor.investor == msg.sender, "You are not an investor !");
+    function setTopInvestor() internal {}
+
+    modifier onlyInvestor() {
+        Investor memory investor = investors[msg.sender];
+
+        uint32 investorIndex = investor.index;
+
+        if (listOfInvestors.length == 0) {
+            revert("You are not an investor !");
+        }
+
+        require(
+            listOfInvestors[investorIndex] == msg.sender,
+            "You are not an investor !"
+        );
         _;
     }
 }
